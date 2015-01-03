@@ -1,0 +1,14 @@
+﻿<Window x:Class="Polaris.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login" Height="200" Width="310" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Icon="NewLogoTop.ico">
+    <Grid Background="#FF555555">
+        <Label Content="Username" HorizontalAlignment="Left" Margin="20,16,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF11E81B" />
+        <Label Content="Password" HorizontalAlignment="Left" Margin="20,66,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF11E81B" />
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Right" Height="23" Margin="0,20,20,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="160" />
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Right" Height="23" Margin="0,70,20,0" VerticalAlignment="Top" Width="160" />
+        <Button Content="Submit" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="23" Margin="0,120,20,0" Click="Button_Click" />
+        <Button Content="Register" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="20,120,0,20 " Click="Button_Click_1" />
+    </Grid>
+</Window>

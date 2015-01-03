@@ -1,0 +1,68 @@
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Release\HAN464Project.accdb
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Release\Polaris.exe.config
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Release\Polaris.exe.manifest
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Release\Polaris.application
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Release\Polaris.exe
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Release\Polaris.pdb
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Login.baml
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Login.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\MainWindow.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\App.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris_Content.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris_MarkupCompile.cache
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris_MarkupCompile.lref
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\MainWindow.baml
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris.g.resources
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\HAN464try1.Properties.Resources.resources
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\HAN464try1.csproj.GenerateResource.Cache
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris.exe.manifest
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris.application
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris.exe
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Release\Polaris.pdb
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\bin\Release\Polaris.exe.config
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\bin\Release\Polaris.exe.manifest
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\bin\Release\Polaris.application
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\bin\Release\Polaris.exe
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\bin\Release\Polaris.pdb
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Login.baml
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Login.g.cs
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\MainWindow.g.cs
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\App.g.cs
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Polaris_MarkupCompile.cache
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Polaris_MarkupCompile.lref
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\MainWindow.baml
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Polaris.g.resources
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\HAN464try1.Properties.Resources.resources
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\HAN464try1.csproj.GenerateResource.Cache
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Polaris.exe.manifest
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Polaris.application
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Polaris.exe
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\Polaris.pdb
+C:\Users\Francis\Downloads\HAN464try1\HAN464try1\obj\Release\HAN464try1.csprojResolveAssemblyReference.cache
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Release\Polaris.exe.config
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris.exe
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris.pdb
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Release\Polaris.exe.manifest
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Release\Polaris.application
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Release\Polaris.exe
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Release\Polaris.pdb
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\HAN464try1.csprojResolveAssemblyReference.cache
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Login.baml
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Login.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\MainWindow.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\App.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris_MarkupCompile.cache
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris_MarkupCompile.lref
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\MainWindow.baml
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris.g.resources
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\HAN464try1.Properties.Resources.resources
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\HAN464try1.csproj.GenerateResource.Cache
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris.exe.manifest
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris.application
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Release\HAN464Project.accdb
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Polaris_Content.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Registration.baml
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Release\Registration.g.cs

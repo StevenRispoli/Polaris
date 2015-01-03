@@ -1,0 +1,621 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Polaris" x:Class="Polaris.MainWindow"
+        Title="Polaris" Width="1050" Height="695"
+        MinWidth="1050" MinHeight="660" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:PolarisDataSet x:Key="PolarisDataSet"/>
+        <CollectionViewSource x:Key="tblUsersViewSource" Source="{Binding tblUsers, Source={StaticResource PolarisDataSet}}"/>
+        <CollectionViewSource x:Key="tblPlatesViewSource" Source="{Binding tblPlates, Source={StaticResource PolarisDataSet}}"/>
+        <CollectionViewSource x:Key="tblComboSizeViewSource" Source="{Binding tblComboSize, Source={StaticResource PolarisDataSet}}"/>
+        <CollectionViewSource x:Key="tblComboLocationViewSource" Source="{Binding tblComboLocation, Source={StaticResource PolarisDataSet}}"/>
+        <CollectionViewSource x:Key="tblPlateCleaningsViewSource" Source="{Binding tblPlateCleanings, Source={StaticResource PolarisDataSet}}"/>
+        <CollectionViewSource x:Key="tblCassettesViewSource" Source="{Binding tblCassettes, Source={StaticResource PolarisDataSet}}"/>
+        <CollectionViewSource x:Key="tblCassetteCleaningsViewSource" Source="{Binding tblCassetteCleanings, Source={StaticResource PolarisDataSet}}"/>
+        <CollectionViewSource x:Key="tblCassetteServicingsViewSource" Source="{Binding tblCassetteServicings, Source={StaticResource PolarisDataSet}}"/>
+    </Window.Resources>
+    <Grid Background="#FF555555" Margin="0,0,0,0">
+        <Menu HorizontalAlignment="Stretch" Height="25" Margin="0,0,0,0" VerticalAlignment="Top" Width="Auto">
+            <MenuItem Header="File">
+                <!--<MenuItem x:Name="filePrint" Header="Print" Click="Button_Click_btnPrint" />
+                <Separator/>-->
+                <MenuItem x:Name="addOptions" Header="Add">
+                    <MenuItem x:Name="addSize" Header="Plate/Cassette Size" Click="Button_Click_openAddSize"/>
+                    <MenuItem x:Name="addLocation" Header="Location" Click="Button_Click_openAddLocation"/>
+                </MenuItem>
+                <MenuItem x:Name="deleteOptions" Header="Delete">
+                    <MenuItem x:Name="deleteSize" Header="Plate/Cassette Size" Click="Button_Click_openDeleteSize"/>
+                    <MenuItem x:Name="deleteLocation" Header="Location" Click="Button_Click_openDeleteLocation"/>
+                </MenuItem>
+                <MenuItem x:Name="updateUserInfo" Header="Update Account" Click="Button_Click_openUpdateAccountBoxGrid"/>
+            </MenuItem>
+        </Menu>
+        <TabControl Background="#FF555555" HorizontalAlignment="Stretch" Height="Auto" Margin="0,30,0,0" VerticalAlignment="Stretch" Width="Auto">
+
+            <!--Start Plates TabItem-->
+
+            <TabItem x:Name="tabPlates" Header="Plates" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Grid Background="#FF555555">
+                    <DockPanel x:Name="dkpPlates" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="Auto" Margin="0,0,0,0" Grid.ColumnSpan="2">
+                        <Label x:Name="lblPlates" Content="Imaging Plates" FontSize="18" Foreground="#FF11E81B" VerticalAlignment="Top" HorizontalAlignment="Left" Focusable="False" Width="150" Height="25" Margin="0,0,0,0" Padding="0,0,0,0" />
+                        <Button x:Name="btnViewPlates" Content="Plates" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="200,0,0,0" Focusable="False" Click="Button_Click_btnViewPlates"/>
+                        <Button x:Name="btnViewPlateCleanings" Content="Cleanings" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="15,0,0,0" Focusable="False" Click="Button_Click_btnViewPlateCleanings"/>
+                        <Button x:Name="btnPlatesRefresh" Content="Refresh" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Margin="15,0,0,0" Focusable="False" Click="Button_Click_tabPlatesRefresh"/>
+                    </DockPanel>
+
+                    <DockPanel x:Name="dkpPlatesQ" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Width="Auto" Margin="0,0,0,0" Grid.Column="1">
+                        <ComboBox x:Name="cmbPlatesQuery" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Height="23" Margin="0,0,0,0"  Focusable="False">
+                            <ComboBoxItem Content="Plates by barcode" />
+                            <ComboBoxItem Content="New Plates" />
+                            <ComboBoxItem Content="Plates due for cleaning" />
+                            <ComboBoxItem Content="Plates needing replacement" />
+                            <ComboBoxItem Content="Plates bought by date" />
+                            <ComboBoxItem Content="Plates bought in past given weeks" />
+                            <ComboBoxItem Content="Plates bought in past given months" />
+                            <ComboBoxItem Content="Expired plate warranties" />
+                            <ComboBoxItem Content="Plate warranties expiring in given number of weeks" />
+                            <ComboBoxItem Content="Plates by location" />
+                            <ComboBoxItem Content="Plate by who is currently using it" />
+                        </ComboBox>
+                        <Button x:Name="btnRunPlatesQuery" Content="Run Query" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="23" Margin="0,0,0,0" Focusable="False" Click="Button_Click_btnRunPlatesQuery"/>
+                    </DockPanel>
+
+                    <DockPanel x:Name="dkpPlateCleaningsQ" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Width="Auto" Margin="0,0,0,0" Visibility="Collapsed" Grid.Column="1">
+                        <ComboBox x:Name="cmbPlateCleaningsQuery" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Height="23" Margin="0,0,0,0"  Focusable="False">
+                            <ComboBoxItem Content="Plates due for cleaning in the next week" />
+                            <ComboBoxItem Content="Plate cleanings by plate cleaning ID" />
+                            <ComboBoxItem Content="Plate cleanings by plate barcode" />
+                            <ComboBoxItem Content="Plate cleanings by date" />
+                        </ComboBox>
+                        <Button x:Name="btnRunPlateCleaningsQuery" Content="Run Query" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="23" Margin="0,0,0,0" Focusable="False" Click="Button_Click_btnRunPlateCleaningsQuery"/>
+                    </DockPanel>
+
+                    <!--Start tblPlates Grid-->
+
+                    <Grid x:Name="tblPlatesGrid" Background="#FF555555" DataContext="{StaticResource tblPlatesViewSource}" Margin="0,25,0,0">
+                        <TextBox x:Name="txtPlate_Barcode" Text="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.plate_Barcode}" HorizontalAlignment="Left" Height="23" Margin="145,25,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <ComboBox x:Name="cmbPlate_Size" SelectedItem="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.plate_Size}" HorizontalAlignment="Left" Height="23" Margin="145,60,0,0" VerticalAlignment="Top" Width="200"/>
+                        <CheckBox x:Name="cbPlate_In_Use" IsChecked="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.in_Use}" Content="In Use" HorizontalAlignment="Left" Margin="145,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <CheckBox x:Name="cbPlate_Overdue_Cleaning" IsChecked="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.overdue_Cleaning}" Content="Overdue Cleaning" HorizontalAlignment="Left" Margin="215,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <TextBox x:Name="txtPlate_Uses_Today" Text="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.uses_Today}" HorizontalAlignment="Left" Height="23" Margin="145,130,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtPlate_Total_Uses" Text="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.total_Uses}" HorizontalAlignment="Left" Height="23" Margin="145,165,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <ComboBox x:Name="cmbPlate_Location" SelectedValue="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.location}" HorizontalAlignment="Left" Height="23" Margin="145,200,0,0" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtPlate_Photo" Text="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.plate_Photo}" HorizontalAlignment="Left" Height="23" Margin="145,235,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpPlate_Purchase_Date" SelectedDate="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.purchase_Date}" HorizontalAlignment="Left" Height="23" Margin="145,270,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpPlate_Warranty_Expire" SelectedDate="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.warranty_Expire}" HorizontalAlignment="Left" Height="23" Margin="145,305,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpPlate_Out_Of_Service" SelectedDate="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.out_Of_Service, TargetNullValue='', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,340,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpPlate_Date_Replaced" SelectedDate="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.date_Replaced, TargetNullValue='', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,375,0,0" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtPlate_Notes" Text="{Binding ElementName=tblPlatesDataGrid, Path=SelectedItem.notes, TargetNullValue='', Mode=TwoWay, UpdateSourceTrigger=Default}" HorizontalAlignment="Left" Height="23" Margin="145,410,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <Label x:Name="lblPlate_Barcode" Content="Plate Barcode" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Size" Content="Plate Size" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblUses_Today" Content="Uses Today" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblTotal_Uses" Content="Total Uses" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Location" Content="Location" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Photo" Content="Plate Photo" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPurchase_Date" Content="Purchase Date" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblWarranty_Expire" Content="Warranty Expiration" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblOut_Of_Service" Content="Out of Service" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblDate_Replaced" Content="Replacement Date" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblNotes" Content="Notes" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <DataGrid x:Name="tblPlatesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" AlternatingRowBackground="#CCCCCC">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="plate_BarcodeColumn" Binding="{Binding plate_Barcode}" Header="plate Barcode" Width="Auto"/>
+                                <DataGridTextColumn x:Name="plate_SizeColumn" Binding="{Binding plate_Size}" Header="plate Size" Width="Auto"/>
+                                <DataGridCheckBoxColumn x:Name="in_UseColumn" Binding="{Binding in_Use}" Header="in Use" Width="Auto"/>
+                                <DataGridTextColumn x:Name="plate_In_Use_By" Binding="{Binding in_Use_By}" Header="In Use By" Width="Auto" Visibility="Visible"/>
+                                <DataGridTextColumn x:Name="uses_TodayColumn" Binding="{Binding uses_Today}" Header="uses Today" Width="Auto"/>
+                                <DataGridTextColumn x:Name="plate_Total_Uses" Binding="{Binding total_Uses}" Header="Total Uses" Width="Auto" />
+                                <DataGridCheckBoxColumn x:Name="overdue_CleaningColumn" Binding="{Binding overdue_Cleaning}" Header="overdue Cleaning" Width="Auto"/>
+                                <DataGridTextColumn x:Name="locationColumn" Binding="{Binding location}" Header="location" Width="Auto"/>
+                                <DataGridHyperlinkColumn x:Name="plate_PhotoColumn" Binding="{Binding plate_Photo}" Header="plate Photo" Width="SizeToHeader">
+                                    <DataGridHyperlinkColumn.ElementStyle>
+                                        <Style>
+                                            <!--Points to Handler method to search local path for image-->
+                                            <EventSetter Event="Hyperlink.Click" Handler="DG_Hyperlink_Click"/>
+                                        </Style>
+                                    </DataGridHyperlinkColumn.ElementStyle>
+                                </DataGridHyperlinkColumn>
+                                <DataGridTemplateColumn x:Name="purchase_DateColumn" CanUserSort="True" SortMemberPath="purchase_Date"  Header="purchase Date" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding purchase_Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="warranty_ExpireColumn" CanUserSort="True" SortMemberPath="warranty_Expire" Header="warranty Expire" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding warranty_Expire, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="out_Of_ServiceColumn" CanUserSort="True" Header="out Of Service" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding out_Of_Service, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="date_ReplacedColumn" CanUserSort="True" Header="date Replaced" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Replaced, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn x:Name="notesColumn" Binding="{Binding notes}" Header="notes" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnInsertPlate" Content="New" HorizontalAlignment="Left" Margin="10,445,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnInsertPlate" Focusable="False"/>
+                        <Button x:Name="btnUpdatePlate" Content="Save" HorizontalAlignment="Left" Margin="145,445,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnUpdatePlate" Focusable="False"/>
+                        <Button x:Name="btnDeletePlate" Content="Delete" HorizontalAlignment="Left" Margin="270,445,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnDeletePlate" Focusable="False"/>
+                    </Grid>
+
+                    <!--End tblPlates Grid-->
+
+                    <!--Start tblPlateCleanings Grid-->
+
+                    <Grid x:Name="tblPlateCleaningsGrid" Background="#FF555555" DataContext="{StaticResource tblPlateCleaningsViewSource}" Margin="0,25,0,0" Visibility="Collapsed">
+                        <TextBox x:Name="txtPlate_Cleaning_ID" Text="{Binding ElementName=tblPlateCleaningsDataGrid, Path=SelectedItem.plate_Cleaning_ID}" HorizontalAlignment="Left" Height="23" Margin="145,25,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" />
+                        <TextBox x:Name="txtPlate_Barcode_tblPC" Text="{Binding ElementName=tblPlateCleaningsDataGrid, Path=SelectedItem.plate_Barcode}" HorizontalAlignment="Left" Height="23" Margin="145,60,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" />
+                        <DatePicker x:Name="dpPlate_Date_Cleaned" SelectedDate="{Binding ElementName=tblPlateCleaningsDataGrid, Path=SelectedItem.date_Cleaned}" HorizontalAlignment="Left" Height="23" Margin="145,95,0,0" VerticalAlignment="Top" Width="200" />
+                        <TextBox x:Name="txtPlate_Cleaned_By" Text="{Binding ElementName=tblPlateCleaningsDataGrid, Path=SelectedItem.cleaned_By}" HorizontalAlignment="Left" Height="23" Margin="145,130,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" Visibility="Visible"/>
+                        <DatePicker  x:Name="dpPlate_Date_Next_Cleaning" SelectedDate="{Binding ElementName=tblPlateCleaningsDataGrid, Path=SelectedItem.date_Next_Cleaning}" HorizontalAlignment="Left" Height="23" Margin="145,165,0,0" VerticalAlignment="Top" Width="200" />
+                        <TextBox x:Name="txtPlate_Cleaning_Notes" Text="{Binding ElementName=tblPlateCleaningsDataGrid, Path=SelectedItem.notes}" HorizontalAlignment="Left" Height="23" Margin="145,200,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" />
+                        <Label x:Name="lblPlate_Cleaning_ID" Content="Plate Cleaning ID" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Cleaning_Barcode" Content="Plate Barcode" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Date_Cleaned" Content="Date Cleaned" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Cleaned_By" Content="Cleaned By" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Date_Next_Cleaning" Content="Date Next Cleaning" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblPlate_Cleaning_Notes" Content="Notes" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <DataGrid x:Name="tblPlateCleaningsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" AlternatingRowBackground="#CCCCCC">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="plate_Cleaning_IDColumn" Binding="{Binding plate_Cleaning_ID}" Header="plate Cleaning ID" Width="Auto"/>
+                                <DataGridTextColumn x:Name="plate_BarcodeColumn1" Binding="{Binding plate_Barcode}" Header="plate Barcode" Width="Auto"/>
+                                <DataGridTemplateColumn x:Name="date_CleanedColumn" CanUserSort="True" Header="date Cleaned" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Cleaned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn x:Name="cleaned_ByColumn" Binding="{Binding cleaned_By}" CanUserSort="True" Header="cleaned By" Width="SizeToHeader" Visibility="Visible"/>
+                                <DataGridTemplateColumn x:Name="date_Next_CleaningColumn" CanUserSort="True" Header="date Next Cleaning" Width="Auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Next_Cleaning, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn x:Name="notesColumn1" Binding="{Binding notes}" Header="notes" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnInsertPlateCleaning" Content="New" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="10,235,0,0" Focusable="False" Click="Button_Click_btnInsertPlateCleaning"/>
+                        <Button x:Name="btnUpdatePlateCleaning" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="145,235,0,0" Focusable="False" Click="Button_Click_btnUpdatePlateCleaning"/>
+                        <Button x:Name="btnDeletePlateCleaning" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="270,235,0,0" Focusable="False" Click="Button_Click_btnDeletePlateCleaning"/>
+                    </Grid>
+
+                    <!--End tblPlateCleanings Grid-->
+
+                </Grid>
+            </TabItem>
+
+            <!--End Plates TabItem-->
+
+            <TabItem x:Name="tabCassettes" Header="Cassettes" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Grid Background="#FF555555">
+                    <DockPanel x:Name="dkpCassettes" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="Auto" Margin="0,0,0,0" LastChildFill="False">
+                        <Label x:Name="lblCassettes" Content="Cassettes" FontSize="18" Foreground="#FF11E81B" VerticalAlignment="Top" HorizontalAlignment="Left" Focusable="False" Width="150" Height="25" Margin="0,0,0,0" Padding="0,0,0,0" />
+                        <Button x:Name="btnViewCassettes" Content="Cassettes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="200,0,0,0" Focusable="False" Click="Button_Click_btnViewCassettes"/>
+                        <Button x:Name="btnViewCassetteCleanings" Content="Cleanings" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="23" Margin="15,0,0,0" Focusable="False" Click="Button_Click_btnViewCassetteCleanings"/>
+                        <Button x:Name="btnViewCassetteServicings" Content="Servicings" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Margin="15,0,0,0" Focusable="False" Click="Button_Click_btnViewCassetteServicings"/>
+                        <Button x:Name="btnCassettesRefresh" Content="Refresh" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Margin="15,0,0,0" Focusable="False" Click="Button_Click_tabCassettesRefresh"/>
+                    </DockPanel>
+
+                    <DockPanel x:Name="dkpCassettesQ" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Width="Auto" Margin="0,0,0,0">
+                        <ComboBox x:Name="cmbCassettesQuery" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Height="23" Margin="0,0,0,0"  Focusable="False">
+                            <ComboBoxItem Content="Cassettes due for cleaning" />
+                            <ComboBoxItem Content="New Cassettes" />
+                            <ComboBoxItem Content="Cassettes needing replacement" />
+                            <ComboBoxItem Content="Cassettes bought by date" />
+                            <ComboBoxItem Content="Cassettes bought in past given weeks" />
+                            <ComboBoxItem Content="Cassettes bought in past given months" />
+                            <ComboBoxItem Content="Expired cassette warranties" />
+                            <ComboBoxItem Content="Cassette warranties expiring in given number of weeks" />
+                            <ComboBoxItem Content="Cassettes by location" />
+                            <ComboBoxItem Content="Cassette by who is currently using it" />
+                            <ComboBoxItem Content="Cassettes sent out for service" />
+                            <ComboBoxItem Content="Cassettes sent out to be serviced by date" />
+                            <ComboBoxItem Content="Cassettes that need to be sent out for service" />
+                        </ComboBox>
+                        <Button x:Name="btnRunCassettesQuery" Content="Run Query" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="23" Margin="0,0,0,0" Focusable="False" Click="Button_Click_btnRunCassettesQuery"/>
+                    </DockPanel>
+
+                    <DockPanel x:Name="dkpCassetteCleaningsQ" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Width="Auto" Margin="0,0,0,0" Visibility="Collapsed">
+                        <ComboBox x:Name="cmbCassetteCleaningsQuery" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Height="23" Margin="0,0,0,0"  Focusable="False">
+                            <ComboBoxItem Content="Cassette cleanings by cassette cleaning ID" />
+                            <ComboBoxItem Content="Cassette cleanings by cassette barcode" />
+                            <ComboBoxItem Content="Cassette cleanings by date" />
+                            <ComboBoxItem Content="Cassettes due for cleaning in the next week" />
+                        </ComboBox>
+                        <Button x:Name="btnRunCassetteCleaningsQuery" Content="Run Query" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="23" Margin="0,0,0,0" Focusable="False" Click="Button_Click_btnRunCassetteCleaningsQuery"/>
+                    </DockPanel>
+
+                    <DockPanel x:Name="dkpCassetteServicingsQ" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Width="Auto" Margin="0,0,0,0" Visibility="Collapsed">
+                        <ComboBox x:Name="cmbCassetteServicingsQuery" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Height="23" Margin="0,0,0,0"  Focusable="False">
+                            <ComboBoxItem Content="Cassette servicings by cassette servicing ID" />
+                            <ComboBoxItem Content="Cassette servicings by barcode" />
+                            <ComboBoxItem Content="Cassette servicings by date servicing needed" />
+                            <ComboBoxItem Content="Cassette servicings by date back in service" />
+                        </ComboBox>
+                        <Button x:Name="btnRunCassetteServicingsQuery" Content="Run Query" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="23" Margin="0,0,0,0" Focusable="False" Click="Button_Click_btnRunCassetteServicingsQuery"/>
+                    </DockPanel>
+
+                    <!--Start tblCassettes Grid-->
+
+                    <Grid x:Name="tblCassettesGrid" Background="#FF555555" Margin="0,25,0,0" DataContext="{StaticResource tblCassettesViewSource}">
+                        <TextBox x:Name="txtCassette_Barcode" Text="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.cassette_Barcode}" HorizontalAlignment="Left" Height="23" Margin="145,25,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <ComboBox x:Name="cmbCassette_Size" SelectedItem="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.cassette_Size}" HorizontalAlignment="Left" Height="23" Margin="145,60,0,0" VerticalAlignment="Top" Width="200"/>
+                        <CheckBox x:Name="cbCassette_In_Use" IsChecked="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.in_Use}" Content="In Use" HorizontalAlignment="Left" Margin="145,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <CheckBox x:Name="cbCassette_Overdue_Cleaning" IsChecked="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.overdue_Cleaning}" Content="Overdue Cleaning" HorizontalAlignment="Left" Margin="215,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <TextBox x:Name="txtCassette_Uses_Today" Text="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.uses_Today}" HorizontalAlignment="Left" Height="23" Margin="145,130,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Total_Uses" Text="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.total_Uses}" HorizontalAlignment="Left" Height="23" Margin="145,165,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <ComboBox x:Name="cmbCassette_Location" SelectedItem="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.location}" HorizontalAlignment="Left" Height="23" Margin="145,200,0,0" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Photo" Text="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.cassette_Photo}" HorizontalAlignment="Left" Height="23" Margin="145,235,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <CheckBox x:Name="cbCassette_Needs_Service" IsChecked="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.needs_Service}" Content="Needs Service" HorizontalAlignment="Left" Height="23" Margin="145,270,0,0" VerticalAlignment="Top" Width="200" Foreground="#FF11E81B" FontSize="14"/>
+                        <DatePicker x:Name="dpCassette_Date_Last_Serviced" SelectedDate="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.sent_For_Service, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,305,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpCassette_Purchase_Date" SelectedDate="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.purchase_Date, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,340,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpCassette_Warranty_Expire" SelectedDate="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.warranty_Expire, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,375,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpCassette_Out_Of_Service" SelectedDate="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.out_Of_Service, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,410,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpCassette_Date_Replaced" SelectedDate="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.date_Replaced, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,445,0,0" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Notes" Text="{Binding ElementName=tblCassettesDataGrid, Path=SelectedItem.notes}" HorizontalAlignment="Left" Height="23" Margin="145,480,0,0" VerticalAlignment="Top" Width="200"/>
+                        <Label x:Name="lblCassette_Barcode" Content="Cassette Barcode" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Size" Content="Cassette Size" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Uses_Today" Content="Uses Today" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Total_Uses" Content="Total Uses" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassetteLocation" Content="Location" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassettePhoto" Content="Cassette Photo" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Date_Last_Serviced" Content="Sent For Service" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Purchase_Date" Content="Purchase Date" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Warranty_Expire" Content="Warranty Expiration" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Out_Of_Service" Content="Out of Service" HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Date_Replaced" Content="Date Replaced" HorizontalAlignment="Left" Margin="10,445,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Notes" Content="Notes" HorizontalAlignment="Left" Margin="10,480,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <DataGrid x:Name="tblCassettesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" AlternatingRowBackground="#CCCCCC">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="cassette_BarcodeColumn" Binding="{Binding cassette_Barcode}" Header="cassette Barcode" Width="Auto"/>
+                                <DataGridTextColumn x:Name="cassette_SizeColumn" Binding="{Binding cassette_Size}" Header="cassette Size" Width="Auto"/>
+                                <DataGridCheckBoxColumn x:Name="in_UseColumn1" Binding="{Binding in_Use}" Header="in Use" Width="Auto"/>
+                                <DataGridTextColumn x:Name="cassette_In_Use_By" Binding="{Binding in_Use_By}" Header="In Use By" Width="Auto" Visibility="Visible"/>
+                                <DataGridTextColumn x:Name="uses_TodayColumn1" Binding="{Binding uses_Today}" Header="uses Today" Width="Auto"/>
+                                <DataGridTextColumn x:Name="cassette_Total_Uses" Binding="{Binding total_Uses}" Header="Total Uses" Width="Auto" />
+                                <DataGridCheckBoxColumn x:Name="overdue_CleaningColumn1" Binding="{Binding overdue_Cleaning}" Header="overdue Cleaning" Width="Auto"/>
+                                <DataGridTextColumn x:Name="locationColumn1" Binding="{Binding location}" Header="location" Width="Auto"/>
+                                <DataGridHyperlinkColumn x:Name="cassette_PhotoColumn" Binding="{Binding cassette_Photo}" Header="cassette Photo" Width="SizeToHeader">
+                                    <DataGridHyperlinkColumn.ElementStyle>
+                                        <Style>
+                                            <!--Points to Handler method to search local path for image-->
+                                            <EventSetter Event="Hyperlink.Click" Handler="DG_Hyperlink_Click"/>
+                                        </Style>
+                                    </DataGridHyperlinkColumn.ElementStyle>
+                                </DataGridHyperlinkColumn>
+                                <DataGridCheckBoxColumn x:Name="needs_ServiceColumn" Binding="{Binding needs_Service}" Header="needs Service" Width="Auto"/>
+                                <DataGridTemplateColumn x:Name="date_Last_ServicedColumn" CanUserSort="True" Header="Sent For Service" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding sent_For_Service, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="purchase_DateColumn1" CanUserSort="True" Header="purchase Date" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding purchase_Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="warranty_ExpireColumn1" CanUserSort="True" Header="warranty Expire" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding warranty_Expire, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="out_Of_ServiceColumn1" CanUserSort="True" Header="out Of Service" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding out_Of_Service, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="date_ReplacedColumn1" CanUserSort="True" Header="date Replaced" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Replaced, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn x:Name="notesColumn2" Binding="{Binding notes}" Header="notes" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnInsertCassette" Content="New" HorizontalAlignment="Left" Margin="10,515,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnInsertCassette" Focusable="False"/>
+                        <Button x:Name="btnUpdateCassette" Content="Save" HorizontalAlignment="Left" Margin="145,515,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnUpdateCassette" Focusable="False"/>
+                        <Button x:Name="btnDeleteCassette" Content="Delete" HorizontalAlignment="Left" Margin="270,515,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnDeleteCassette" Focusable="False"/>
+                    </Grid>
+
+                    <!--End tblCassettes grid-->
+
+                    <!--Start tblCassetteCleanings grid-->
+
+                    <Grid x:Name="tblCassetteCleaningsGrid" Background="#FF555555" Margin="0,25,0,0" DataContext="{StaticResource tblCassetteCleaningsViewSource}" Visibility="Collapsed">
+                        <TextBox x:Name="txtCassette_Cleaning_ID" Text="{Binding ElementName=tblCassetteCleaningsDataGrid, Path=SelectedItem.cassette_Cleaning_ID}" HorizontalAlignment="Left" Height="23" Margin="145,25,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" />
+                        <TextBox x:Name="txtCassette_Barcode_tblCC" Text="{Binding ElementName=tblCassetteCleaningsDataGrid, Path=SelectedItem.cassette_Barcode}" HorizontalAlignment="Left" Height="23" Margin="145,60,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpCassette_Date_Cleaned" SelectedDate="{Binding ElementName=tblCassetteCleaningsDataGrid, Path=SelectedItem.date_Cleaned, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,95,0,0" VerticalAlignment="Top" Width="200" />
+                        <TextBox x:Name="txtCassette_Cleaned_By" Text="{Binding ElementName=tblCassetteCleaningsDataGrid, Path=SelectedItem.cleaned_By}" HorizontalAlignment="Left" Height="23" Margin="145,130,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" />
+                        <DatePicker x:Name="dpCassette_Date_Next_Cleaning" SelectedDate="{Binding ElementName=tblCassetteCleaningsDataGrid, Path=SelectedItem.date_Next_Cleaning, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,165,0,0" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Cleaning_Notes" Text="{Binding ElementName=tblCassetteCleaningsDataGrid, Path=SelectedItem.notes}" HorizontalAlignment="Left" Height="23" Margin="145,200,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <Label x:Name="lblCassette_Cleaning_ID" Content="Cassette Cleaning ID" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Barcode_tblCC" Content="Cassette Barcode" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Date_Cleaned" Content="Date Cleaned" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Cleaned_By" Content="Employee ID" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Date_Next_Cleaning" Content="Date Next Cleaning" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Cleaning_Notes" Content="Notes" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <DataGrid x:Name="tblCassetteCleaningsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" AlternatingRowBackground="#CCCCCC">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="cassette_Cleaning_IDColumn" Binding="{Binding cassette_Cleaning_ID}" Header="cassette Cleaning ID" Width="Auto"/>
+                                <DataGridTextColumn x:Name="cassette_BarcodeColumn1" Binding="{Binding cassette_Barcode}" Header="cassette Barcode" Width="Auto"/>
+                                <DataGridTemplateColumn x:Name="date_CleanedColumn1" CanUserSort="True" Header="date Cleaned" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Cleaned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn x:Name="cleaned_ByColumn1" CanUserSort="True" Binding="{Binding cleaned_By}" Header="cleaned By" Width="Auto"/>
+                                <DataGridTemplateColumn x:Name="date_Next_CleaningColumn1" CanUserSort="True" Header="date Next Cleaning" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Next_Cleaning, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn x:Name="notesColumn3" Binding="{Binding notes}" Header="notes" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnInsertCassetteCleaning" Content="New" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnInsertCassetteCleaning" Focusable="False"/>
+                        <Button x:Name="btnUpdateCassetteCleaning" Content="Save" HorizontalAlignment="Left" Margin="145,235,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnUpdateCassetteCleaning" Focusable="False"/>
+                        <Button x:Name="btnDeleteCassetteCleaning" Content="Delete" HorizontalAlignment="Left" Margin="270,235,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnDeleteCassetteCleaning" Focusable="False"/>
+                    </Grid>
+
+                    <!--End tblCassetteCleanings grid-->
+
+                    <!--Start tblCassetteServicings grid-->
+                    <Grid x:Name="tblCassetteServicingsGrid" Background="#FF555555" Margin="0,25,0,0" DataContext="{StaticResource tblCassetteServicingsViewSource}" Visibility="Collapsed">
+                        <TextBox x:Name="txtCassette_Servicing_ID" Text="{Binding ElementName=tblCassetteServicingsDataGrid, Path=SelectedItem.cassette_Servicing_ID}" HorizontalAlignment="Left" Height="23" Margin="145,25,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Barcode_tblCS" Text="{Binding ElementName=tblCassetteServicingsDataGrid, Path=SelectedItem.cassette_Barcode}" HorizontalAlignment="Left" Height="23" Margin="145,60,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpCassette_Date_Needs_Servicing" SelectedDate="{Binding ElementName=tblCassetteServicingsDataGrid, Path=SelectedItem.date_Needs_Servicing, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,95,0,0" VerticalAlignment="Top" Width="200"/>
+                        <DatePicker x:Name="dpCassette_Date_Back_In_Service" SelectedDate="{Binding ElementName=tblCassetteServicingsDataGrid, Path=SelectedItem.date_Back_In_Service, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="145,130,0,0" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Photo_Before_Service" Text="{Binding ElementName=tblCassetteServicingsDataGrid, Path=SelectedItem.photo_Before_Service}" HorizontalAlignment="Left" Height="23" Margin="145,165,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Photo_After_Service" Text="{Binding ElementName=tblCassetteServicingsDataGrid, Path=SelectedItem.photo_After_Service}" HorizontalAlignment="Left" Height="23" Margin="145,200,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <TextBox x:Name="txtCassette_Servicing_Notes" Text="{Binding ElementName=tblCassetteServicingsDataGrid, Path=SelectedItem.notes}" HorizontalAlignment="Left" Height="23" Margin="145,235,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200"/>
+                        <Label x:Name="lblCassette_Servicing_ID" Content="Cassette Cleaning ID" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Barcode_tblCS" Content="Cassette Barcode" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Date_Needs_Servicing" Content="Date Needs Service" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Date_Back_In_Service" Content="Back In Service" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Photo_Before_Service" Content="Photo Before Service" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Photo_After_Service" Content="Photo After Service" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <Label x:Name="lblCassette_Servicings_Notes" Content="Notes" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                        <DataGrid x:Name="tblCassetteServicingsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" AlternatingRowBackground="#CCCCCC">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="cassette_Servicing_IDColumn" Binding="{Binding cassette_Servicing_ID}" Header="cassette Servicing ID" Width="Auto"/>
+                                <DataGridTextColumn x:Name="cassette_BarcodeColumn2" Binding="{Binding cassette_Barcode}" Header="cassette Barcode" Width="Auto"/>
+                                <DataGridTemplateColumn x:Name="date_Needs_ServicingColumn" CanUserSort="True" Header="date Needs Servicing" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Needs_Servicing, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="date_Back_In_ServiceColumn" CanUserSort="True" Header="date Back In Service" Width="SizeToHeader">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker SelectedDate="{Binding date_Back_In_Service, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridHyperlinkColumn x:Name="photo_Before_ServiceColumn" Binding="{Binding photo_Before_Service}" Header="photo Before Service" Width="SizeToHeader">
+                                    <DataGridHyperlinkColumn.ElementStyle>
+                                        <Style>
+                                            <!--Points to Handler method to search local path for image-->
+                                            <EventSetter Event="Hyperlink.Click" Handler="DG_Hyperlink_Click"/>
+                                        </Style>
+                                    </DataGridHyperlinkColumn.ElementStyle>
+                                </DataGridHyperlinkColumn>
+                                <DataGridHyperlinkColumn x:Name="photo_After_ServiceColumn" Binding="{Binding photo_After_Service}" Header="photo After Service" Width="SizeToHeader">
+                                    <DataGridHyperlinkColumn.ElementStyle>
+                                        <Style>
+                                            <!--Points to Handler method to search local path for image-->
+                                            <EventSetter Event="Hyperlink.Click" Handler="DG_Hyperlink_Click"/>
+                                        </Style>
+                                    </DataGridHyperlinkColumn.ElementStyle>
+                                </DataGridHyperlinkColumn>
+                                <DataGridTextColumn x:Name="notesColumn4" Binding="{Binding notes}" Header="notes" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnInsertCassetteServicing" Content="New" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnInsertCassetteServicing" Focusable="False"/>
+                        <Button x:Name="btnUpdateCassetteServicing" Content="Save" HorizontalAlignment="Left" Margin="145,270,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnUpdateCassetteServicing" Focusable="False"/>
+                        <Button x:Name="btnDeleteCassetteServicing" Content="Delete" HorizontalAlignment="Left" Margin="270,270,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnDeleteCassetteServicing" Focusable="False"/>
+                    </Grid>
+
+                    <!--End tblCassetteServicings grid-->
+
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tabUsers" Header="Users" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="70">
+                <Grid Background="#FF555555" DataContext="{StaticResource tblUsersViewSource}">
+                    <DataGrid x:Name="tblUsersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" AlternatingRowBackground="#CCCCCC">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="employee_IDColumn" Binding="{Binding employee_ID}" Header="employee ID" Width="Auto"/>
+                            <DataGridTextColumn x:Name="last_NameColumn" Binding="{Binding last_Name}" Header="last Name" Width="Auto"/>
+                            <DataGridTextColumn x:Name="first_NameColumn" Binding="{Binding first_Name}" Header="first Name" Width="Auto"/>
+                            <DataGridTextColumn x:Name="usernameColumn" Binding="{Binding username}" Header="username" Width="Auto"/>
+                            <DataGridTextColumn x:Name="emailColumn" Binding="{Binding email}" Header="email" Width="Auto"/>
+                            <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding password}" Header="password" Width="Auto" Visibility="Collapsed"/>
+                            <DataGridTextColumn x:Name="security_LevelColumn" Binding="{Binding security_Level}" Header="security Level" Width="Auto"/>
+                            <DataGridTextColumn x:Name="login_AttemptsColumn" Binding="{Binding login_Attempts}" Header="login Attempts" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Users" FontSize="18" Foreground="#FF11E81B" VerticalAlignment="Top" HorizontalAlignment="Left" Focusable="False" Width="150" Height="25" Margin="0,0,0,0" Padding="0,0,0,0" />
+                    <Label Content="Employee ID" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                    <Label Content="First Name" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                    <Label Content="Last Name" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                    <Label Content="Username" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                    <Label Content="Security Level" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                    <Label Content="Login Attempts" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Foreground="#FF11E81B" FontSize="14"/>
+                    <TextBox x:Name="txtEmployee_ID" Text="{Binding ElementName=tblUsersDataGrid, Path=SelectedItem.employee_ID}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,25,0,0" TextWrapping="NoWrap" Width="200" Height="23" />
+                    <TextBox x:Name="txtFirst_Name" Text="{Binding ElementName=tblUsersDataGrid, Path=SelectedItem.first_Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,60,0,0" TextWrapping="NoWrap" Width="200" Height="23" />
+                    <TextBox x:Name="txtLast_Name" Text="{Binding ElementName=tblUsersDataGrid, Path=SelectedItem.last_Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,95,0,0" TextWrapping="NoWrap" Width="200" Height="23" />
+                    <TextBox x:Name="txtUsername" Text="{Binding ElementName=tblUsersDataGrid, Path=SelectedItem.username}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,130,0,0" TextWrapping="NoWrap" Width="200" Height="23" />
+                    <TextBox x:Name="txtEmail" Text="{Binding ElementName=tblUsersDataGrid, Path=SelectedItem.email}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,165,0,0" TextWrapping="NoWrap" Width="200" Height="23" />
+                    <ComboBox x:Name="cmbSecurity_Level" SelectedItem="{Binding ElementName=tblUsersDataGrid, Path=SelectedItem.security_Level}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,200,0,0" Width="200" Height="23" >
+                        <ComboBoxItem Content="0" />
+                        <ComboBoxItem Content="1" />
+                        <ComboBoxItem Content="2" />
+                        <ComboBoxItem Content="3" />
+                        <ComboBoxItem Content="4" />
+                    </ComboBox>
+                    <TextBox x:Name="txtLogin_Attempts" Text="{Binding ElementName=tblUsersDataGrid, Path=SelectedItem.login_Attempts}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,235,0,0" TextWrapping="NoWrap" Width="200" Height="23" />
+                    <Button x:Name="btnUpdateUser" Content="Save" HorizontalAlignment="Left" Margin="145,305,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnUpdateUser" Focusable="False"/>
+                    <Button x:Name="btnDeleteUser" Content="Delete" HorizontalAlignment="Left" Margin="270,305,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_btnDeleteUser" Focusable="False"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Grid x:Name="queryResultsGrid" Visibility="Collapsed">
+            <Border Background="#FF555555" Width="Auto" MaxWidth="600" Height="350" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Grid>
+                    <DataGrid x:Name="queryResultsDataGrid" Width="Auto" Height="307" ItemsSource="{Binding}" AutoGenerateColumns="True" HorizontalAlignment="Center"  VerticalAlignment="Top" EnableColumnVirtualization="True" EnableRowVirtualization="True"  RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,0,0" />
+                    <Button x:Name="btnCloseQueryResults" Content="Exit" Width="75" Height="23" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,5" Click="Button_Click_closeQueryResults"/>
+                    <!--<Button x:Name="btnPrintQueryResults" Content="Print" Width="75" Height="23" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,5" Click="Button_Click_btnPrint"/>-->
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!--Start input box-->
+
+        <Grid x:Name="dateInputBoxGrid" Visibility="Collapsed">
+            <Border MinWidth="250" MinHeight="100" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="txbDateInputInstructions" Margin="5,5,5,5" Text="Enter Parameter" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <DatePicker x:Name="dpInputDatePicker" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnDateQuerySubmit" Margin="5,5,5,5" Content="Submit" Click="Button_Click_btnDateQuerySubmit"/>
+                        <Button x:Name="btnDateQueryCancel" Margin="5,5,5,5" Content="Cancel" Click="btnDateQueryCancel_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="textInputBoxGrid" Visibility="Collapsed">
+            <Border MinWidth="250" MinHeight="100" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="txbTextInputInstructions" Margin="5,5,5,5" Text="Enter Parameter" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <TextBox x:Name="txtInputTextBox" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnTextQuerySubmit" Margin="5,5,5,5" Content="Submit" Click="Button_Click_btnTextQuerySubmit"/>
+                        <Button x:Name="btnTextQueryCancel" Margin="5,5,5,5" Content="Cancel" Click="btnTextQueryCancel_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="comboInputBoxGrid" Visibility="Collapsed">
+            <Border MinWidth="250" MinHeight="100" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="txbComboInputInstructions" Margin="5,5,5,5" Text="Enter Parameter" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <ComboBox x:Name="cmbInputCombobox" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" Focusable="False"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnComboQuerySubmit" Margin="5,5,5,5" Content="Submit" Click="Button_Click_btnComboQuerySubmit"/>
+                        <Button x:Name="btnComboQueryCancel" Margin="5,5,5,5" Content="Cancel" Click="btnComboQueryCancel_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="updateAccountBoxGrid" Visibility="Collapsed">
+            <Border MinWidth="300" MinHeight="200" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid>
+                    <TextBlock x:Name="txbAccountInfo" Margin="5,5,5,5" Text="Account Settings" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <Label x:Name="lblFirstNameUpdate" Width="75" Height="25" HorizontalAlignment="Left" Content="First Name" Margin="0,35,0,136" Foreground="#FF11E81B"/>
+                    <Label x:Name="lblLastNameUpdate" Width="75" Height="25" HorizontalAlignment="Left" Content="Last Name" Margin="0,65,0,106" Foreground="#FF11E81B"/>
+                    <Label x:Name="lblEmailUpdate" Width="75" Height="25" HorizontalAlignment="Left" Content="Email" Margin="0,95,0,76" Foreground="#FF11E81B"/>
+                    <Label x:Name="lblPasswordUpdate" Width="75" Height="25" HorizontalAlignment="Left" Content="Password" Margin="0,126,0,45" Foreground="#FF11E81B"/>
+                    <TextBox x:Name="txtFirstNameUpdate" Width="75" Height="25" Margin="0,35,5,136" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="txtLastNameUpdate" Width="75" Height="25" Margin="0,65,5,106" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="txtEmailUpdate" Width="75" Height="25"   Margin="0,95,5,75" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <PasswordBox x:Name="txtPasswordUpdate" Width="75" Height="25" Margin="0,126,5,46" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <Button x:Name="btnAccountUpdate" Width="75" Margin="211,161,10,10" Height="25" Content="Submit" Click="Button_Click_updateAccount"/>
+                    <Button x:Name="btnCloseAccountSettings" Margin="10,161,211,10" Height="25" Width="75" Content="Close" Click="Button_Click_closerUpdateAccountBoxGrid"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="addToComboSizes" Visibility="Collapsed">
+            <Border MinWidth="250" MinHeight="100" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="txbAddToComboSizes" Margin="5,5,5,5" Text="Please enter a plate/cassette size" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <TextBox x:Name="txtAddToComboSizes" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnSubmitSize" Margin="5,5,5,5" Content="Submit" Click="Button_Click_addSize"/>
+                        <Button x:Name="btnSubmitSizeCancel" Margin="5,5,5,5" Content="Close" Click="Button_Click_closeAddSize"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="addToComboLocations" Visibility="Collapsed">
+            <Border MinWidth="250" MinHeight="100" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="txbAddToComboLocations" Margin="5,5,5,5" Text="Please enter a location" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <TextBox x:Name="txtAddToComboLocations" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnSubmitLocation" Margin="5,5,5,5" Content="Submit" Click="Button_Click_addLocation"/>
+                        <Button x:Name="btnSubmitLocationCancel" Margin="5,5,5,5" Content="Close" Click="Button_Click_closeAddLocation"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="deleteFromComboSizes" Visibility="Collapsed">
+            <Border MinWidth="250" MinHeight="100" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="txbDeleteFromComboSizes" Margin="5,5,5,5" Text="Select a plate/cassette size to delete" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <ComboBox x:Name="cmbDeleteFromComboSizes" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnDeleteSize" Margin="5,5,5,5" Content="Submit" Click="Button_Click_deleteSize"/>
+                        <Button x:Name="btnDeleteSizeCancel" Margin="5,5,5,5" Content="Close" Click="Button_Click_closeDeleteSize"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="deleteFromComboLocations" Visibility="Collapsed">
+            <Border MinWidth="250" MinHeight="100" Background="#FF555555" BorderBrush="#FF11E81B" BorderThickness="2" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="txbDeleteFromComboLocations" Margin="5,5,5,5" Text="Select a location to delete" FontWeight="Bold" Foreground="#FF11E81B" />
+                    <ComboBox x:Name="cmbDeleteFromComboLocations" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnDeleteLocation" Margin="5,5,5,5" Content="Submit" Click="Button_Click_deleteLocation"/>
+                        <Button x:Name="btnCloseDeleteLocation" Margin="5,5,5,5" Content="Close" Click="Button_Click_closeDeleteLocation"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!--End input box-->
+
+    </Grid>
+</Window>

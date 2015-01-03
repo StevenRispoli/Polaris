@@ -1,0 +1,65 @@
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\bin\Debug\HAN464try1.exe.config
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\HAN464try1.csprojResolveAssemblyReference.cache
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\Login.baml
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\MainWindow.baml
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\Login.g.cs
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\MainWindow.g.cs
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\App.g.cs
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\HAN464try1_MarkupCompile.cache
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\HAN464try1.g.resources
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\HAN464try1.Properties.Resources.resources
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\HAN464try1.csproj.GenerateResource.Cache
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\bin\Debug\HAN464try1.exe
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\bin\Debug\HAN464try1.pdb
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\HAN464try1.exe
+c:\users\steve\documents\visual studio 2013\Projects\HAN464try1\HAN464try1\obj\Debug\HAN464try1.pdb
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\HAN464try1.csprojResolveAssemblyReference.cache
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Login.baml
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\MainWindow.baml
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Login.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\MainWindow.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\App.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\HAN464try1.Properties.Resources.resources
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\HAN464try1.csproj.GenerateResource.Cache
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Debug\Polaris.exe.config
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Debug\Polaris.exe.manifest
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Debug\Polaris.application
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Debug\Polaris.exe
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Debug\Polaris.pdb
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris_MarkupCompile.cache
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris_MarkupCompile.lref
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris.g.resources
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris.exe.manifest
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris.application
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris.exe
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris.pdb
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Debug\Polaris.exe.config
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Debug\Polaris.exe.manifest
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Debug\Polaris.application
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Debug\Polaris.exe
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Debug\Polaris.pdb
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Login.baml
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Registration.baml
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Login.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\MainWindow.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Registration.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\App.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris_MarkupCompile.cache
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris_MarkupCompile.lref
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\MainWindow.baml
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris.g.resources
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\HAN464try1.Properties.Resources.resources
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\HAN464try1.csproj.GenerateResource.Cache
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris.exe.manifest
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris.application
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris.exe
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris.pdb
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\bin\Debug\HAN464Project.accdb
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\Polaris_Content.g.cs
+C:\Users\Steve\Desktop\HAN464try1\HAN464try1\obj\Debug\HAN464try1.csprojResolveAssemblyReference.cache
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Registration.baml
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Registration.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\obj\Debug\Polaris_Content.g.cs
+C:\Users\Steve\Desktop\Code Tutorials\HAN464try1\HAN464try1\bin\Debug\HAN464Project.accdb
