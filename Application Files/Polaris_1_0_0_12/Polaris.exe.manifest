@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Polaris.exe" version="1.0.0.12" publicKeyToken="3a550325897a3698" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="NewLogoTop.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Polaris" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Polaris.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Polaris.exe" size="520704">
+      <assemblyIdentity name="Polaris" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>x6auT8dWR/FhROsYpxS2SuI4WQrH4aU98suqCrSwVsE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="NewLogoTop.ico" size="99678">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>E0bNLUntVvc5R7Kqt4Di6krHttJoOSTNM7qAB/l8YGQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Polaris.accdb" size="1433600">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>JPqdKy71NPpZ50f80kiDXox6//zBgr/Z5jzNoucYHfM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Polaris.exe.config" size="499">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>GZIk7j6PPtBRmrSS1+vSgrPwI/yEjtUquolCA10pE1g=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Steve-PC\Steve" issuerKeyHash="9179601b093c80eca8c54e1f64dc06b2e1a86c7f" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>+k3XsClShxNtcMW704Ss9B+8dXZ+RIlgVC1B/r/59VQ=</DigestValue></Reference></SignedInfo><SignatureValue>kBGb8rL6W/USrRiGNsIhXrC281E6OK0S8l29onSvKgTFgXpkMoNI7k0PY3F/F/0OVna0sqdE+p2Owcm+ZZe51y+K9Rb26iKlNTVvLBKPmzPqDi6Xa+uOCS5OTIa4M1T7/DoWvOSQGnsV2x2po0fstR4BDkm89B+/NIu6WrXeEzc=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>6mDI3rG3ZIwedkYed2FYrikXi1DDs46GKbsitLwGS5g9USuwiE9IV/PIj8hgfWVoZvVVCvnPtL2kFoAL8ZCsYjgWiy7ac2KiV8BvsBoh0nhMTlBAtfXp05N3HYIyuTTF8/aHTDVQ+tTPqdHDlkm9MYgvslXjzNlA1OiPtrRc+oM=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="54f5f9bffe412d546089447e7675bc1ff4ac84d3bbc5706d13875229b0d74dfa" Description="" Url=""><as:assemblyIdentity name="Polaris.exe" version="1.0.0.12" publicKeyToken="3a550325897a3698" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Steve-PC\Steve</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>L+wPi0DSu8Cwlbt+ZPw6X5g+ZImbm9IupbopNmOI+8M=</DigestValue></Reference></SignedInfo><SignatureValue>VAbuih7jIHPNhKboPZP6UrtOnVD2fd53buELf4PtoUpK2KEHEjLDv1VHgLh5SYyZoHXswkMTbQe+gqddhwaDHyY3SWk5rAvOFxtFZhh0u+nwxjVSNt7VsmPsD3Yq7+9sPScZa/TSxl220+4OZfGsF9A7ExNiVf/InIJDdWglfTc=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>6mDI3rG3ZIwedkYed2FYrikXi1DDs46GKbsitLwGS5g9USuwiE9IV/PIj8hgfWVoZvVVCvnPtL2kFoAL8ZCsYjgWiy7ac2KiV8BvsBoh0nhMTlBAtfXp05N3HYIyuTTF8/aHTDVQ+tTPqdHDlkm9MYgvslXjzNlA1OiPtrRc+oM=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB0TCCATqgAwIBAgIQFUR+HuxPopFN4OGbqfMRBTANBgkqhkiG9w0BAQsFADAnMSUwIwYDVQQDHhwAUwB0AGUAdgBlAC0AUABDAFwAUwB0AGUAdgBlMB4XDTE0MDUxMjAwNTU1M1oXDTE1MDUxMjA2NTU1M1owJzElMCMGA1UEAx4cAFMAdABlAHYAZQAtAFAAQwBcAFMAdABlAHYAZTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA6mDI3rG3ZIwedkYed2FYrikXi1DDs46GKbsitLwGS5g9USuwiE9IV/PIj8hgfWVoZvVVCvnPtL2kFoAL8ZCsYjgWiy7ac2KiV8BvsBoh0nhMTlBAtfXp05N3HYIyuTTF8/aHTDVQ+tTPqdHDlkm9MYgvslXjzNlA1OiPtrRc+oMCAwEAATANBgkqhkiG9w0BAQsFAAOBgQBPVOUq+zCEXmFsS1ms7nOHUtSlTqcq0JwUrTx5U5NuaP6Darp9duRBz9aSy4sPix/y1o6UB7s+B8KrN3o/SsYVrlafZXbSEKAOXk7Bpn/rau4fBQBZpZqNKNYvJhSaNdw9Dzis4mnf5w6I2MTW+DoGwr6b7ptH7RjKlmGnKYvOeg==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
